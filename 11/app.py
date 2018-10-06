@@ -8,10 +8,10 @@ from sqlalchemy import create_engine, inspect, func
 from flask import Flask, jsonify
 
 #################################################
-# Database Setup
+# Reflect Tables into SQLAlchemy ORM
 #################################################
 engine = create_engine("sqlite:///Hawaii.sqlite")
-# reflect the database into a new model
+# reflect an existing database into a new model
 Base = automap_base()
 # reflect the tables
 Base.prepare(engine, reflect=True)

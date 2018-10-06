@@ -71,7 +71,7 @@ def precipitation():
 @app.route("/api/v1.0/stations")
 def stations():
     """Return a list of station for last year"""
-# Return a JSON list of stations from the dataset.
+#  Return a JSON list of stations from the dataset.
     active_station = session.query(Measurement.station, func.count(Measurement.tobs)).group_by(Measurement.station).order_by(func.count(Measurement.tobs).desc()).all()
     most_active = active_station[0][0]   
     return jsonify(active_station)
@@ -80,7 +80,7 @@ def stations():
 @app.route("/api/v1.0/tobs")
 def tobs():
     """Return a list of temperatures for last year"""
-#    * Return a JSON list of Temperature Observations (tobs) for the previous year.
+#  Return a JSON list of Temperature Observations (tobs) for the previous year.
     temp_obsv = session.query(Measurement.station, Measurement.date, Measurement.tobs).filter(Measurement.station == most_active).filter(Measurement.date > year_ago).order_by(Measurement.date).all()
     return jsonify(temp_obsv)
 
